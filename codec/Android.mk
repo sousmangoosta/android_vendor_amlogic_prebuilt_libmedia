@@ -1,4 +1,5 @@
 ifeq (,$(wildcard vendor/amlogic/frameworks/av/AmFFmpegAdapter))
+ifeq (,$(wildcard vendor/amlogic/AmFFmpegAdapter))
 LOCAL_PATH := $(call my-dir)
 
 PATH_32 := $(TARGET_OUT_VENDOR)/lib/
@@ -17,4 +18,5 @@ LOCAL_SRC_FILES_arm := lib/$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)
 LOCAL_SRC_FILES_arm64 := lib64/$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)
 
 include $(BUILD_PREBUILT)
+endif
 endif
