@@ -1,0 +1,62 @@
+LOCAL_PATH := $(call my-dir)
+
+PATH_32 := $(TARGET_OUT_VENDOR)/lib/
+PATH_64 := $(TARGET_OUT_VENDOR)/lib64/
+
+ifneq (0, $(shell expr $(PLATFORM_VERSION) \>= 8.1))
+SRC_PATH_32 := 8.1/lib/
+SRC_PATH_64 := 8.1/lib64/
+else
+SRC_PATH_32 := 8.0/lib/
+SRC_PATH_64 := 8.0/lib64/
+endif
+
+ifeq (,$(wildcard $(LOCAL_PATH)/../../../frameworks/av/AmFFmpegAdapter))
+ifeq (,$(wildcard $(LOCAL_PATH)/../../../AmFFmpegAdapter))
+include $(CLEAR_VARS)
+
+LOCAL_MODULE := libamffmpegadapter
+LOCAL_MULTILIB := both
+LOCAL_MODULE_SUFFIX :=.so
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_MODULE_PATH_32 := $(PATH_32)
+LOCAL_MODULE_PATH_64 := $(PATH_64)
+LOCAL_SRC_FILES_arm := $(SRC_PATH_32)$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)
+LOCAL_SRC_FILES_arm64 := $(SRC_PATH_64)$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)
+
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+
+LOCAL_MODULE := libavenhancements
+LOCAL_MULTILIB := both
+LOCAL_MODULE_SUFFIX :=.so
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_MODULE_PATH_32 := $(PATH_32)
+LOCAL_MODULE_PATH_64 := $(PATH_64)
+LOCAL_SRC_FILES_arm := $(SRC_PATH_32)$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)
+LOCAL_SRC_FILES_arm64 := $(SRC_PATH_64)$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)
+
+include $(BUILD_PREBUILT)
+
+endif
+endif
+
+ifeq (,$(wildcard $(LOCAL_PATH)/../../../frameworks/av/amnuplayer))
+ifeq (,$(wildcard $(LOCAL_PATH)/../../../amnuplayer))
+include $(CLEAR_VARS)
+
+LOCAL_MODULE := libamnuplayer
+LOCAL_MULTILIB := 32
+LOCAL_MODULE_SUFFIX :=.so
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+LOCAL_MODULE_PATH_32 := $(PATH_32)
+LOCAL_SRC_FILES_arm := $(SRC_PATH_32)$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)
+
+include $(BUILD_PREBUILT)
+endif
+endif
+
