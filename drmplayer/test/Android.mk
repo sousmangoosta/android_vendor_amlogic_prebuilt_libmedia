@@ -1,4 +1,4 @@
-ifeq ($(BOARD_BUILD_VMX_DRM),true)
+ifneq (,$(filter true,$(BOARD_BUILD_VMX_DRM) $(BUILD_WITH_WIDEVINECAS)))
 ifeq (,$(wildcard vendor/amlogic/common/frameworks/av/drmplayer))
 LOCAL_PATH := $(call my-dir)
 

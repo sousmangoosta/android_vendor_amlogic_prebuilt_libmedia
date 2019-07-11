@@ -1,4 +1,4 @@
-ifeq ($(BOARD_BUILD_VMX_DRM),true)
+ifneq (,$(filter true,$(BOARD_BUILD_VMX_DRM) $(BUILD_WITH_WIDEVINECAS)))
 ifeq (,$(wildcard vendor/amlogic/common/frameworks/av/drmplayer))
 LOCAL_PATH := $(call my-dir)
 
@@ -54,14 +54,13 @@ LOCAL_MODULE_SUFFIX := .ta
 ifeq ($(TARGET_ENABLE_TA_SIGN), true)
 $(info $(shell mkdir -p $(shell pwd)/$(PRODUCT_OUT)/signed/drmplayer))
 $(info $(shell $(shell pwd)/$(BOARD_AML_VENDOR_PATH)/tdk/ta_export/scripts/sign_ta_auto.py \
-		--in=$(shell pwd)/$(LOCAL_PATH)/$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX) \
+		--in=$(shell pwd)/$(LOCAL_PATH)/lib/$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX) \
 		--out=$(shell pwd)/$(PRODUCT_OUT)/signed/drmplayer/$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX) \
 		--keydir=$(shell pwd)/$(BOARD_AML_TDK_KEY_PATH)))
 LOCAL_SRC_FILES := ../../../../../../$(PRODUCT_OUT)/signed/drmplayer/$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)
 else
 LOCAL_SRC_FILES := lib/$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)
 endif
-LOCAL_PROPRIETARY_MODULE := true
 LOCAL_STRIP_MODULE := false
 LOCAL_32_BIT_ONLY := true
 LOCAL_MODULE_TAGS := optional
