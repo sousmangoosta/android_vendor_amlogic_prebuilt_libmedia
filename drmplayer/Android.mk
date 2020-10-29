@@ -16,6 +16,10 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_CLASS := SHARED_LIBRARIES
 LOCAL_MODULE_PATH_32 := $(DRMPLAYER_PATH_32)
 LOCAL_SRC_FILES_arm := lib/$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)
+LOCAL_SHARED_LIBRARIES := libbinder libc++ libc libcutils libdl libdrmp libgui liblog libm \
+	libmedia libmediaplayerservice libsonivox libstagefright libstagefright_foundation libui \
+	libutils libvorbisidec
+LOCAL_ALLOW_UNDEFINED_SYMBOLS := true
 include $(BUILD_PREBUILT)
 
 #####################################################################
@@ -28,6 +32,9 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_CLASS := SHARED_LIBRARIES
 LOCAL_MODULE_PATH_32 := $(DRMPLAYER_PATH_32)
 LOCAL_SRC_FILES_arm := lib/$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)
+LOCAL_SHARED_LIBRARIES := libam_adp_adec libamffmpeg libc++ libc libcutils libdec_ca libdl liblog \
+	libm libutils
+LOCAL_ALLOW_UNDEFINED_SYMBOLS := true
 include $(BUILD_PREBUILT)
 
 #####################################################################
@@ -40,6 +47,8 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_CLASS := SHARED_LIBRARIES
 LOCAL_MODULE_PATH_32 := $(DRMPLAYER_PATH_32)
 LOCAL_SRC_FILES_arm := lib/$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)
+LOCAL_SHARED_LIBRARIES := libam_adp_adec libc++ libc libdl liblog libm libteec libutils
+LOCAL_CHECK_ELF_FILES := false
 include $(BUILD_PREBUILT)
 
 #####################################################################

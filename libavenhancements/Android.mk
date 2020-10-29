@@ -25,6 +25,9 @@ LOCAL_MODULE_PATH_32 := $(PATH_32)
 LOCAL_MODULE_PATH_64 := $(PATH_64)
 LOCAL_SRC_FILES_arm := $(SRC_PATH_32)$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)
 LOCAL_SRC_FILES_arm64 := $(SRC_PATH_64)$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)
+LOCAL_SHARED_LIBRARIES := libamffmpeg libammediaext libbinder libc++ libc libcutils libdl liblog \
+	libm libmediaextractor libstagefright_foundation libutils
+LOCAL_CHECK_ELF_FILES := false
 
 include $(BUILD_PREBUILT)
 
@@ -39,6 +42,10 @@ LOCAL_MODULE_PATH_32 := $(PATH_32)
 LOCAL_MODULE_PATH_64 := $(PATH_64)
 LOCAL_SRC_FILES_arm := $(SRC_PATH_32)$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)
 LOCAL_SRC_FILES_arm64 := $(SRC_PATH_64)$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)
+LOCAL_SHARED_LIBRARIES := libammediaext libbinder libc++ libc libcutils libdl liblog libm \
+	libmedia_omx libmediaextractor libstagefright_foundation libstagefright_omx \
+	libstagefright_xmlparser libutils
+LOCAL_CHECK_ELF_FILES := false
 
 include $(BUILD_PREBUILT)
 
@@ -51,6 +58,8 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_CLASS := SHARED_LIBRARIES
 LOCAL_MODULE_PATH_32 := $(PATH_VENDOR_32)
 LOCAL_SRC_FILES_arm := $(SRC_PATH_32)$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)
+LOCAL_SHARED_LIBRARIES := libamffmpeg.vendor libammediaext libbinder libc++ libc libcutils libdl \
+	liblog libm libstagefright_foundation libutils
 
 include $(BUILD_PREBUILT)
 
@@ -63,6 +72,9 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_CLASS := SHARED_LIBRARIES
 LOCAL_MODULE_PATH_32 := $(PATH_EXTRACTORS_32)
 LOCAL_SRC_FILES_arm := $(SRC_PATH_32)$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)
+LOCAL_SHARED_LIBRARIES := libbinder libc++ libc libcutils libdl liblog libm libmediaextractor \
+	libstagefright_foundation libutils
+LOCAL_CHECK_ELF_FILES := false
 
 include $(BUILD_PREBUILT)
 

@@ -16,6 +16,9 @@ LOCAL_MODULE_PATH_32 := $(PATH_32)
 LOCAL_MODULE_PATH_64 := $(PATH_64)
 LOCAL_SRC_FILES_arm := lib/$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)
 LOCAL_SRC_FILES_arm64 := lib64/$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)
+LOCAL_SHARED_LIBRARIES := libamffmpegcodec libammediaext libc++ libc libdl liblog libm \
+	libstagefright_foundation libstagefright_omx libutils
+LOCAL_ALLOW_UNDEFINED_SYMBOLS := true
 
 include $(BUILD_PREBUILT)
 include $(CLEAR_VARS)
